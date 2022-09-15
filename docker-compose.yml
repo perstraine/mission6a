@@ -1,0 +1,28 @@
+services:
+  #mongodb service
+  mongo_db:
+    container_name: mongodb-fruits-test
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongodb-vol2:/data/db
+
+  #node api
+  api:
+    container_name: back-end-api
+    build: ./back
+    ports:
+      - 4000:4000
+    depends_on:
+      - mongo_db
+
+  front:
+    container_name: front-end
+    build: ./front
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+
+volumes:
+  mongodb-vol2: {}
