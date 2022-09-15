@@ -66,8 +66,7 @@ function App() {
       setToPrint(newObj);
     }
   };
-  // const result = sortNameDesc(dbItems);
-  // console.log(result);
+
 
   return (
     <div className="App">
